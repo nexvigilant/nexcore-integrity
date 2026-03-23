@@ -1,0 +1,39 @@
+
+[package]
+name = "nexcore-integrity"
+description = "KSB assessment integrity via AI text detection — statistical fingerprints aggregated through chemistry primitives with Bloom-level threshold adaptation"
+version = "1.0.0"
+edition = "2024"
+authors = ["NexVigilant Team <team@nexvigilant.com>"]
+license = "LicenseRef-Proprietary"
+rust-version = "1.85"
+
+[dependencies]
+nexcore-error = { workspace = true }
+serde = { version = "1.0.204", features = ["derive"] }
+serde_json = { version = "1.0.120" }
+nexcore-lex-primitiva = { version = "0.1.0", path = "../nexcore-lex-primitiva", registry = "nexcore" }
+
+[dev-dependencies]
+proptest = { version = "1.6.0" }
+
+[features]
+default = []
+# Expose KSB test fixtures for examples and integration tests
+fixtures = []
+
+[[example]]
+name = "experiment_1"
+required-features = ["fixtures"]
+
+[[example]]
+name = "recalibrate"
+required-features = ["fixtures"]
+
+[[example]]
+name = "recalibrate_deep"
+required-features = ["fixtures"]
+
+
+[lints]
+workspace = true
